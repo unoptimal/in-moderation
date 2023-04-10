@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Moderation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="startOverBtn">Start over</button>
+    <div id="introduction">
+        <p>You are a moderator of an online community. Your goal is to maintain a good community. Press start.</p>
+        <button id="startBtn">Start</button>
+    </div>
+    
+    <div id="scene1" style="display:none">
+        <h1>Scene 1</h1>
+        <h1>Online Forum</h1>
+        <div class="post">
+            <h2 class="post-title">Post Title 1</h2>
+            <p class="post-details hidden">
+                This is some more information about Post 1. You can add more content here, like images, links, etc.
+            </p>
+            <div class="post-stats">
+                <span class="post-likes">10 likes</span>
+                <span class="post-comments">5 comments</span>
+            </div>
+            <div class="comments hidden">
+                <div class="comment">
+                    <p><strong>User1:</strong> This is a comment.</p>
+                    <span class="comment-likes">3 likes</span>
+                </div>
+                <div class="comment">
+                    <p><strong>User2:</strong> This is another comment.</p>
+                    <span class="comment-likes">1 like</span>
+                </div>
+            </div>
+        </div>    
+        <button id="scene1next">Next</button>
+    </div>
+
+    <div id="scene2" style="display:none">
+        <h1>Scene 2</h1>
+        <h1>Online Forum</h1>
+        
+    </div>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>

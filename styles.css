@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+.scene {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.post {
+    border: 1px solid #ccc;
+    padding: 1em;
+    margin-bottom: 1em;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.scene {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .scene.visible {
+    opacity: 1;
+  }
+  
+
+.post {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.post-title {
+    cursor: pointer;
+}
+
+.post-details,
+.comments {
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
