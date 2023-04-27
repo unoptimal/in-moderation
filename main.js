@@ -20,33 +20,78 @@ function getNextScene(currentScene) {
   }
 
   if (currentScene === 'scene1') {
+    if (userChoices.accountScene === 'scene1') {
+      return 'scene2a';
+    }
       return 'scene2';
   }
 
   if(currentScene === 'scene2'){
+    if (userChoices.accountScene === 'scene2') {
+      return 'scene3a';
+    }
     return 'scene3'
   }
 
+
+
   if(currentScene === 'scene3'){
+    if (userChoices.accountScene === 'scene3') {
+      return 'scene4a';
+    }
     return 'scene4'
   }
 
+ 
+
   if(currentScene === 'scene4'){
+    if (userChoices.accountScene === 'scene4') {
+      return 'scene5b';
+    }
     return 'scene5'
   }
 
   if(currentScene === 'scene5'){
-    if (userChoices.account) {
-      return 'scene6a';
+    if (userChoices.accountScene === 'scene5') {
+      return 'scene6b';
     } else {
     return 'scene6'
     }
   }
 
-  if(currentScene === 'scene6' || currentScene === 'scene6a'){
+  if(currentScene === 'scene6'){
     return 'scene7'
   }
+  
+  if(currentScene === 'scene5b'){
+    return 'scene6b';
+  }
 
+  if(currentScene === 'scene6b'){
+    return 'scene7b';
+  }
+
+  
+  // if they press it early
+  if(currentScene === 'scene2a'){
+    return 'scene3a';
+  }
+
+  if(currentScene === 'scene3a'){
+    return 'scene4a';
+  }
+
+  if(currentScene === 'scene4a'){
+    return 'scene5a';
+  }
+
+  if(currentScene === 'scene5a'){
+    return 'scene6a';
+  }
+
+  if(currentScene === 'scene6a'){
+    return 'scene7a'
+  }
 
 
 }
@@ -63,11 +108,12 @@ function attachPermaBanButtonListeners() {
   });
 }
 
-function attachOtherButtonListeners() {
+function attachOtherButtonListeners(currentScene) {
 
   const accountButton = document.querySelector('.account');
   accountButton.addEventListener('click', function () {
-    userChoices.account = true;
+    userChoices.accountScene = currentScene;
+    console.log(userChoices.accountScene)
     accountButton.disabled = true;
   });
 
@@ -91,7 +137,7 @@ function attachNextButtonListener(currentScene) {
       loadScene(nextScene, function () {
         attachNextButtonListener(nextScene);
         attachPermaBanButtonListeners();
-        attachOtherButtonListeners();
+        attachOtherButtonListeners(nextScene);
       });
     } else {
       console.log('No more scenes available');
@@ -102,7 +148,7 @@ function attachNextButtonListener(currentScene) {
 const userChoices = {
   User1: false,
   User2: false,
-  account: false,
+  accountScene: null,
   highValue: false
 };
 
