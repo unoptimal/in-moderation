@@ -20,16 +20,33 @@ function getNextScene(currentScene) {
   }
 
   if (currentScene === 'scene1') {
-    if (userChoices.User1 && userChoices.User2) {
-      return 'scene2c';
-    } else if (userChoices.User1) {
-      return 'scene2a';
-    } else if (userChoices.User2) {
-      return 'scene2b';
-    } else {
       return 'scene2';
+  }
+
+  if(currentScene === 'scene2'){
+    return 'scene3'
+  }
+
+  if(currentScene === 'scene3'){
+    return 'scene4'
+  }
+
+  if(currentScene === 'scene4'){
+    return 'scene5'
+  }
+
+  if(currentScene === 'scene5'){
+    if (userChoices.account) {
+      return 'scene6a';
+    } else {
+    return 'scene6'
     }
   }
+
+  if(currentScene === 'scene6' || currentScene === 'scene6a'){
+    return 'scene7'
+  }
+
 
 
 }
@@ -47,17 +64,11 @@ function attachPermaBanButtonListeners() {
 }
 
 function attachOtherButtonListeners() {
-  // Add event listeners for the other buttons
-  const stricterPostingButton = document.querySelector('.strict-posting');
-  stricterPostingButton.addEventListener('click', function () {
-    userChoices.stricterPosting++;
-    stricterPostingButton.disabled = true;
-  });
 
-  const registrationButton = document.querySelector('.registration');
-  registrationButton.addEventListener('click', function () {
-    userChoices.registration = true;
-    registrationButton.disabled = true;
+  const accountButton = document.querySelector('.account');
+  accountButton.addEventListener('click', function () {
+    userChoices.account = true;
+    accountButton.disabled = true;
   });
 
   const highValueButton = document.querySelector('.high-value');
@@ -68,7 +79,12 @@ function attachOtherButtonListeners() {
 }
 
 function attachNextButtonListener(currentScene) {
-  document.getElementById('next-button').addEventListener('click', function () {
+  const nextButton = document.getElementById('next-button');
+
+  const newNextButton = nextButton.cloneNode(true);
+  nextButton.parentNode.replaceChild(newNextButton, nextButton);
+
+  newNextButton.addEventListener('click', function () {
     const nextScene = getNextScene(currentScene);
 
     if (nextScene) {
@@ -79,7 +95,6 @@ function attachNextButtonListener(currentScene) {
       });
     } else {
       console.log('No more scenes available');
-      console.log(userChoices);
     }
   });
 }
@@ -87,8 +102,7 @@ function attachNextButtonListener(currentScene) {
 const userChoices = {
   User1: false,
   User2: false,
-  stricterPosting: 0,
-  registration: false,
+  account: false,
   highValue: false
 };
 
